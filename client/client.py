@@ -27,8 +27,9 @@ class Client():
 
     # Zeichne die GUI
     def __drawContent(self):
-        Label(self.__root, text="Zeile (absolut oder relativ)").grid(row=0)
-        Label(self.__root, text="Spalte  (absolut oder relativ)").grid(row=1)
+        Label(self.__root, text="Spalte  (absolut oder relativ)").grid(row=0)
+        Label(self.__root, text="Zeile (absolut oder relativ)").grid(row=1)
+        
 
         Client.inputRow = Entry(self.__root)
         Client.inputColumn = Entry(self.__root)

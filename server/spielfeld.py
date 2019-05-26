@@ -24,7 +24,7 @@ class Gui():
         return Gui.__RoboterGui
 
 
-    def __init__(self, root, columns=10, rows=10, cellsize=50, bordersize=100):
+    def __init__(self, root, columns=7, rows=6, cellsize=50, bordersize=100):
         self.gui = root
         self.cellsize = cellsize
         self.bordersize = bordersize

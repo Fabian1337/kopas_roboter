@@ -55,9 +55,24 @@ class Roboter(Obsticle):
             y = coordinates[1]
 
             # abhängig von der gewählten Geschwindigkeit wird die Anzahl der Durchläufe und die X- und Y-Änderung nach jedem Durchgang berechnet
-            self.counter = loops
+            
             self.moveX = int((newX - x) / loops)
             self.moveY = int((newY - y) / loops)
+
+            #more smooth animation
+            missedX = (newX - x) / loops  - int((newX - x) / loops)
+            missedY = (newY - y) / loops -  int((newY - y) / loops)
+            totalX =  missedX * loops
+            totalY =  missedY * loops
+
+            try:
+                addloops = max(int(totalX/self.moveX), int(totalY/self.moveY))
+            except ZeroDivisionError:
+                addloops = 0
+            
+            print(addloops)
+            self.counter = loops + addloops
+
 
             self.__move()           # starte die Animation
 
@@ -77,7 +92,7 @@ class Roboter(Obsticle):
             coordinates = self.canvas.coords(self.circle)
             x = coordinates[0]
             y = coordinates[1]
-            self.canvas.move(self.circle, self.fmoveX-x, self.fmoveY-y) 
+            self.canvas.move(self.circle, self.fmoveX-x, self.fmoveY-y)
             self.canvas.update()
             self.canvas.after(self.wait, self.moveNext) # die Methode moveNext() kann überschrieben werden und wird aufgerufen, wenn die bisherige Animation beendet wurde
 
